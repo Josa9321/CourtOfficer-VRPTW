@@ -1,0 +1,13 @@
+__pycache__
+
+.*
+!.gitignore
+
+# LaTeX text generation 
+rateio
+*.aux
+*.toc
+*.gz
+*.log
+*.out
+*.pdf

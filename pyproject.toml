@@ -1,0 +1,27 @@
+[tool.basedpyright]
+typeCheckingMode = "standard"
+extraPaths = ["."]
+
+reportUnknownMemberType = false
+reportUnknownVariableType = false
+reportUnknownArgumentType = false
+reportUnknownParameterType = false
+reportMissingTypeStubs = false
+
+[[tool.basedpyright.executionEnvironments]]
+root = "./src/vrptw/model.py"  # Use the exact filename or path
+reportAttributeAccessIssue = "none"
+reportGeneralTypeIssues = "none"
+
+[[tool.basedpyright.executionEnvironments]]
+root = "./src/vrptw/model.py"  # Use the exact filename or path
+reportAttributeAccessIssue = "none"
+reportGeneralTypeIssues = "none"
+
+[[tool.basedpyright.executionEnvironments]]
+root = "App"
+reportUnknownVariableType = "none"
+reportCallIssue = "none"
+reportAttributeAccessIssue = "none"
+reportArgumentType = "none"
+reportGeneralTypeIssues = "none"

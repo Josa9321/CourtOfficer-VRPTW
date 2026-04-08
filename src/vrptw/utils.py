@@ -20,11 +20,14 @@ class Solution:
     def print(self):
         print(f"Objective value: {self.obj}")
         for k in self.K:
+            print(f"DAY {k}")
+            print(self.sequence_set[k], end='\n\n')
             for (idx, j) in enumerate(self.sequence_set[k]):
                 print(f"{j:>4} ({self.time_set[k][idx]:>4.2f})", end=' ->')
             print()
 
     def ordenate_addresses_k(self, addresses_set, k):
+        self.sequence_set[k][-1] = 0
         return [addresses_set[i] for i in self.sequence_set[k]]
 
     def _get_sequence_k(self, model, k):

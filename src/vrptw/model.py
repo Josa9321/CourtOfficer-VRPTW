@@ -6,8 +6,13 @@ from .utils import Solution
 
 def solve_instance(instance: Instance):
     model = define_model(instance)
+
     opt = pyo.SolverFactory('cplex')
-    opt.solve(model)
+    opt.options['timelimit'] = 600
+    opt.options['mipgap'] = 0.05
+    opt.options['threads'] = 4
+
+    opt.solve(model, tee=True)
     solution = Solution(model)
     return solution
 
@@ -64,7 +69,7 @@ def ruleC6(model, i, j, k):
         return pyo.Constraint.Skip
     else:
         return model.T[i, k] + model.time_point[i] + model.time_matrix[i, j] <= model.T[j, k] + (1 - model.x[i, j, k]
-            ) * 1.01*max(0, model.b[i] + model.time_point[i] + model.time_matrix[i, j] - model.a[j])
+            ) * 1.01 * max(0, model.b[i] + model.time_point[i] + model.time_matrix[i, j] - model.a[j])
 
 def ruleC7a(model, i, k):
     return model.T[i, k] >= model.a[i]

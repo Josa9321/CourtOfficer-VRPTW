@@ -2,6 +2,7 @@ __pycache__
 
 .*
 !.gitignore
+main.py
 
 # LaTeX text generation 
 rateio

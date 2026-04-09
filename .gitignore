@@ -3,6 +3,7 @@ __pycache__
 .*
 !.gitignore
 main.py
+todo
 
 # LaTeX text generation 
 rateio

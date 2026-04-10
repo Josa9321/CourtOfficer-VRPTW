@@ -1,10 +1,12 @@
 import numpy as np
 import urllib.parse
+import json
+import argparse
 
 import pyomo.environ as pyo
 
 class Solution:
-    def __init__(self, model):
+    def __init__(self, model, report):
         self.V = sorted(model.V)
         self.N = sorted(model.N)
         self.K = sorted(model.K)
@@ -14,6 +16,7 @@ class Solution:
         self.time_set = [self._get_time_k(model, k) for k in self.K]
 
         self.obj = model.obj()
+        self.time = report.solver.time
 
         self._validate_solution()
 
@@ -29,6 +32,16 @@ class Solution:
     def ordenate_addresses_k(self, addresses_set, k):
         self.sequence_set[k][-1] = 0
         return [addresses_set[i] for i in self.sequence_set[k]]
+
+    def save(self, file_path):
+        solution = {
+                "sequeces": self.sequence_set,
+                "solve_time": self.time,
+                "obj": self.obj
+                }
+        with open(file_path, 'w') as f:
+            json.dump(solution, f, indent=4)
+
 
     def _get_sequence_k(self, model, k):
         sequence_k: list[int] = [0]
@@ -82,3 +95,12 @@ def get_api_key():
     with open('.api') as f:
         api_key = f.readline().strip()
     return api_key
+
+def get_parse_args():
+    parser = argparse.ArgumentParser(
+            "VRPTW For a Court Officer",
+            "This program solves a instance, provided in JSON, and saves the instance as a JSON file"
+            )
+    parser.add_argument('instance', type=str)
+    parser.add_argument('-v', '--verbose', type=int, default=0)
+    return parser.parse_args()

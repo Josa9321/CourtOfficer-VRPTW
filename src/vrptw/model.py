@@ -4,7 +4,7 @@ import numpy as np
 from . import Instance
 from .utils import Solution
 
-def solve_instance(instance: Instance):
+def solve_instance(instance: Instance, print_level: int):
     model = define_model(instance)
 
     opt = pyo.SolverFactory('cplex')
@@ -12,8 +12,8 @@ def solve_instance(instance: Instance):
     opt.options['mipgap'] = 0.05
     opt.options['threads'] = 4
 
-    opt.solve(model, tee=True)
-    solution = Solution(model)
+    report = opt.solve(model, tee=print_level==1)
+    solution = Solution(model, report)
     return solution
 
 def define_model(instance: Instance):

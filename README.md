@@ -78,12 +78,14 @@ Create a file named `.api` in the project root directory containing your Google 
 your_api_key_here
 ```
 
-<!-- ### Usage -->
-<!---->
-<!-- ```bash -->
-<!-- python main.py --input mandates.json -->
-<!-- ``` -->
-<!---->
+### Usage
+
+Run the solver from the terminal, passing a JSON instance file as argument. A solution file prefixed with `solution_` will be generated in the same directory.
+
+```bash
+python run.py instance.json  # generates solution_instance.json
+```
+
 <!-- --- -->
 <!---->
 <!-- ## License -->

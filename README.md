@@ -80,10 +80,26 @@ your_api_key_here
 
 ### Usage
 
+#### Command line
+
 Run the solver from the terminal, passing a JSON instance file as argument. A solution file prefixed with `solution_` will be generated in the same directory.
 
 ```bash
 python run.py instance.json  # generates solution_instance.json
+```
+
+#### REST API
+
+Start the Flask server:
+
+```bash
+flask --app api.py run
+```
+
+Then, send a POST request to the `/solve` endpoint with the instance as the JSON body. A ready-to-use script is provided exemplifying the process:
+
+```bash
+python example_api.py
 ```
 
 <!-- --- -->

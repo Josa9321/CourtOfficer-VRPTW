@@ -34,14 +34,16 @@ class Solution:
         return [addresses_set[i] for i in self.sequence_set[k]]
 
     def save(self, file_path):
-        solution = {
+        solution = self.set_object()
+        with open(file_path, 'w') as f:
+            json.dump(solution, f, indent=4)
+
+    def set_object(self):
+        return {
                 "sequeces": self.sequence_set,
                 "solve_time": self.time,
                 "obj": self.obj
                 }
-        with open(file_path, 'w') as f:
-            json.dump(solution, f, indent=4)
-
 
     def _get_sequence_k(self, model, k):
         sequence_k: list[int] = [0]

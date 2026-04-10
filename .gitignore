@@ -13,3 +13,5 @@ rateio
 *.log
 *.out
 *.pdf
+
+*.json

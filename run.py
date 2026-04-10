@@ -1,4 +1,4 @@
-from src import vrptw
+import vrptw
 
 if __name__ == "__main__":
     parse_args = vrptw.get_parse_args()

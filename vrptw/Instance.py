@@ -73,6 +73,9 @@ class Instance:
 def load_json_instance(file_path: str):
     with open(file_path, 'r') as f:
         json_instance = json.load(f)
+    return load_json_object_instance(json_instance)
+
+def load_json_object_instance(json_instance):
     time_window_a = np.array([addr["time_window"]["start"] for addr in json_instance['mandates']])
     time_window_b = np.array([addr["time_window"]["finish"] for addr in json_instance['mandates']])
     time_point = np.array([addr["service_time"] for addr in json_instance['mandates']])

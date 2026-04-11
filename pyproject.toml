@@ -9,7 +9,7 @@ reportUnknownParameterType = false
 reportMissingTypeStubs = false
 
 [[tool.basedpyright.executionEnvironments]]
-root = "./src/vrptw/model.py"  # Use the exact filename or path
+root = "./vrptw/model.py"  # Use the exact filename or path
 reportAttributeAccessIssue = "none"
 reportGeneralTypeIssues = "none"
 

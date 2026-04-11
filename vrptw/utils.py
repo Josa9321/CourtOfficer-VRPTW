@@ -29,6 +29,14 @@ class Solution:
                 print(f"{j:>4} ({self.time_set[k][idx]:>4.2f})", end=' ->')
             print()
 
+    def print_route_in_google(self, instance):
+        for k in instance.K:
+            print(f"  - DAY {k}", end='\n\n')
+            ordered_set = self.ordenate_addresses_k(instance.addresses_set, k)
+            set_divided = [ordered_set[i : min(i + 10, len(ordered_set))] for i in range(0, len(ordered_set), 9)]
+            for set in set_divided:
+                print(generate_maps_link(set), end='\n\n')
+
     def ordenate_addresses_k(self, addresses_set, k):
         self.sequence_set[k][-1] = 0
         return [addresses_set[i] for i in self.sequence_set[k]]
@@ -105,4 +113,5 @@ def get_parse_args():
             )
     parser.add_argument('instance', type=str)
     parser.add_argument('-v', '--verbose', type=int, default=0)
+    parser.add_argument('-g', '--google', type=int, default=0)
     return parser.parse_args()

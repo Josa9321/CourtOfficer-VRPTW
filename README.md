@@ -13,7 +13,7 @@ The Court Officer Routing System is a specialized tool built to optimize the wee
 ## Features
 
 - **VRPTW Optimization** — A Mixed Integer Linear Programming model that enforces time constraints for every delivery and visit.
-- **Real-World Traffic Data** — Integrates with the Google Routes API or Open Source Routing Machine (OSRM) to fetch real travel durations and distances.
+- **Real-World Traffic Data** — Integrates with the Google Routes API or Nominatim and Open Source Routing Machine (OSRM) to fetch real travel durations and distances.
 - **Automated Scheduling** — Produces a structured document detailing the full optimized daily agenda for the week.
 - **Smart Navigation Links** — Generates Google Maps URLs for every route. To work around Google's waypoint limit, long routes are automatically split into sequential links of up to 10 points each, ensuring seamless turn-by-turn navigation.
 
@@ -25,7 +25,7 @@ The Court Officer Routing System is a specialized tool built to optimize the wee
 |---|---|
 | Language | Python 3.x |
 | Optimization | [Pyomo](http://www.pyomo.org/) (MILP) |
-| External APIs | Google Routes API |
+| External APIs | Google Routes API, Nominatim, OSRM |
 
 ---
 

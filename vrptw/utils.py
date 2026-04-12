@@ -30,12 +30,20 @@ class Solution:
             print()
 
     def print_route_in_google(self, instance):
+        idx = 1
         for k in instance.K:
-            print(f"  - DAY {k}", end='\n\n')
             ordered_set = self.ordenate_addresses_k(instance.addresses_set, k)
-            set_divided = [ordered_set[i : min(i + 10, len(ordered_set))] for i in range(0, len(ordered_set), 9)]
-            for set in set_divided:
-                print(generate_maps_link(set), end='\n\n')
+            if len(ordered_set) == 2:
+                continue
+
+            i = 0
+            print(f"  - ROUTE {idx}")
+            while i < len(ordered_set) - 1:
+                chunk = ordered_set[i : min(i+10, len(ordered_set))]
+                print(generate_maps_link(chunk), end='\n\n')
+                i += 9
+
+            idx += 1
 
     def ordenate_addresses_k(self, addresses_set, k):
         self.sequence_set[k][-1] = 0

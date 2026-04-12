@@ -8,14 +8,12 @@ Optimizing judicial efficiency through mathematical programming and real-time ge
 
 The Court Officer Routing System is a specialized tool built to optimize the weekly schedule of a **Court Officer** (*Oficial de Justiça*). It models the problem as a **Vehicle Routing Problem with Time Windows (VRPTW)**, ensuring that judicial mandates are served not only via the shortest path, but strictly within each mandate's required time window.
 
-> **Note:** The system currently supports up to **25 geographical points** per optimization run.
-
 ---
 
 ## Features
 
 - **VRPTW Optimization** — A Mixed Integer Linear Programming model that enforces time constraints for every delivery and visit.
-- **Real-World Traffic Data** — Integrates with the Google Routes API or Open Source Routing Machine (OSRM) to fetch accurate travel durations and distances based on real-time traffic conditions.
+- **Real-World Traffic Data** — Integrates with the Google Routes API or Open Source Routing Machine (OSRM) to fetch real travel durations and distances.
 - **Automated Scheduling** — Produces a structured document detailing the full optimized daily agenda for the week.
 - **Smart Navigation Links** — Generates Google Maps URLs for every route. To work around Google's waypoint limit, long routes are automatically split into sequential links of up to 10 points each, ensuring seamless turn-by-turn navigation.
 
@@ -135,14 +133,23 @@ python run.py instance.json  # generates solution_instance.json
 
 Optional flags:
 
-| Flag | Description |
-|---|---|
-| `-v` | Prints solver details during optimization |
-| `-g` | Generates Google Maps navigation links for the routes — only use if addresses are real and valid |
+| Flag | Default | Description |
+|---|---|---|
+| `-v` | 0 | Prints solver details during optimization |
+| `-g` | 0 | Generates Google Maps navigation links for the routes — only use if addresses are real and valid |
+
+
+For example, to solve the `instanceOSRM.json` generated above with `-g` enabled:
 
 ```bash
-python run.py instance.json -v 1 -g 1
+python run.py instance.json -g 1
 ```
+
+This produces a Google Maps navigation link for each day's route. The link and resulting map for this example are shown below:
+
+[Open Route in Google Maps](https://www.google.com/maps/dir/?api=1&origin=Avenida%20Ant%C3%B4nio%20Apol%C3%B4nio%20de%20Oliveira%2C%20Caruaru%20Pernambuco&destination=Avenida%20Ant%C3%B4nio%20Apol%C3%B4nio%20de%20Oliveira%2C%20Caruaru%20Pernambuco&waypoints=Tribunal%20de%20Justi%C3%A7a%20de%20Pernambuco%201%C2%AA%20C%C3%A2mara%20Regional|Escapecar%20Caruaru%20Pernambuco|Shopping%20Difusora%20Caruaru%20Pernambuco|Insano%27s%20Hamburgueria%20Caruaru%20Pernambuco|Cerpe%20Avenida%20Agamenon%20Magalh%C3%A3es%20Caruaru%20Pernambuco|Unidade%20de%20Sa%C3%BAde%20da%20Fam%C3%ADlia%20Padre%20In%C3%A1cio%20Caruaru%20Pernambuco|Rua%20Cleto%20Campelo%20Caruaru%20Pernambuco|Cosmopolitan%20Shopping%20Caruaru%20Pernambuco)
+
+![Example route](./imgs/example.png)
 
 ---
 

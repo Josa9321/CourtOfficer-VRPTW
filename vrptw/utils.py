@@ -122,4 +122,5 @@ def get_parse_args():
     parser.add_argument('instance', type=str)
     parser.add_argument('-v', '--verbose', type=int, default=0)
     parser.add_argument('-g', '--google', type=int, default=0)
+    parser.add_argument('-t', '--time', type=float, default=600)
     return parser.parse_args()

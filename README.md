@@ -137,6 +137,7 @@ Optional flags:
 |---|---|---|
 | `-v` | 0 | Prints solver details during optimization |
 | `-g` | 0 | Generates Google Maps navigation links for the routes — only use if addresses are real and valid |
+| `-t` | 600 | Solver time to solve instance |
 
 
 For example, to solve the `instanceOSRM.json` generated above with `-g` enabled:

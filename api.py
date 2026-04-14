@@ -15,5 +15,5 @@ def solve_instance():
         return jsonify({"error": "No JSON instance provided"}), 400
 
     instance = vrptw.load_json_object_instance(instance_json)
-    solution = vrptw.solve_instance(instance, 0)
+    solution = vrptw.solve_instance(instance, 0, 600)
     return jsonify(solution.set_object()), 200

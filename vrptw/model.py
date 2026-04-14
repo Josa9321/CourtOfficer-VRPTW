@@ -4,11 +4,11 @@ import numpy as np
 from . import Instance
 from .utils import Solution
 
-def solve_instance(instance: Instance, print_level: int):
+def solve_instance(instance: Instance, print_level: int, time: float):
     model = define_model(instance)
 
     opt = pyo.SolverFactory('cplex')
-    opt.options['timelimit'] = 600
+    opt.options['timelimit'] = time
     opt.options['mipgap'] = 0.05
     opt.options['threads'] = 4
 
